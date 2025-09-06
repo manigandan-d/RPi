@@ -6,6 +6,11 @@ GPIO.setmode(GPIO.BCM)
 LED_PIN = 17
 GPIO.setup(LED_PIN, GPIO.OUT)
 
+# GPIO.setmode(GPIO.BOARD)
+
+# LED_PIN = 11 
+# GPIO.setup(LED_PIN, GPIO.OUT)
+
 print("Starting...")
 
 try: 
