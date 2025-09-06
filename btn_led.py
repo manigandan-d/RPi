@@ -7,7 +7,8 @@ LED_PIN = 17
 BTN_PIN = 18
 
 GPIO.setup(LED_PIN, GPIO.OUT)
-GPIO.setup(BTN_PIN, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(BTN_PIN, GPIO.IN)
+# GPIO.setup(BTN_PIN, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 led_state = False
 prev_btn_state = GPIO.LOW
