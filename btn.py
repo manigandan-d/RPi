@@ -4,7 +4,8 @@ import time
 GPIO.setmode(GPIO.BCM)
 
 BTN_PIN = 18
-GPIO.setup(BTN_PIN, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(BTN_PIN, GPIO.IN)
+# GPIO.setup(BTN_PIN, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 try: 
     while True:
