@@ -8,7 +8,7 @@ BTN_UP    = 23    # GPIO23 (pin 16)
 BTN_DOWN  = 24    # GPIO24 (pin 18)
 
 GPIO.setup(LED_PIN, GPIO.OUT)
-GPIO.setup(BTN_UP, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(BTN_UP, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(BTN_DOWN, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) 
 
 pwm = GPIO.PWM(LED_PIN, 1000)
@@ -19,6 +19,8 @@ duty_cycle = 0
 prev_up_state = GPIO.LOW
 prev_down_state = GPIO.LOW
 
+BP = 0 
+
 print("Starting...")
 
 try: 
@@ -27,14 +29,24 @@ try:
         cur_down_state = GPIO.input(BTN_DOWN)
 
         if cur_up_state == GPIO.HIGH and prev_up_state == GPIO.LOW:
-            if duty_cycle < 100:
-                duty_cycle += 10
-                pwm.ChangeDutyCycle(duty_cycle)
+            BP += 1
+            duty_cycle = 1.5849 ** BP 
+
+            if duty_cycle > 100:
+                duty_cycle = 100
+
+            pwm.ChangeDutyCycle(duty_cycle)
+            print(f"Brightness Increased: {duty_cycle}%")
 
         if cur_down_state == GPIO.HIGH and prev_down_state == GPIO.LOW:
-            if duty_cycle > 0: 
-                duty_cycle -= 10 
-                pwm.ChangeDutyCycle(duty_cycle)
+            BP -= 1
+            duty_cycle = 1.5849 ** BP 
+
+            if duty_cycle < 0:
+                duty_cycle = 0
+                
+            pwm.ChangeDutyCycle(duty_cycle)
+            print(f"Brightness Decreased: {duty_cycle}%")
 
         prev_up_state = cur_up_state
         prev_down_state = cur_down_state
