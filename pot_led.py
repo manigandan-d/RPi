@@ -12,6 +12,8 @@ pwm.start(0)
 
 adc = MCP3008(vref=3.3)
 
+print("Starting...")
+
 try:
     while True: 
         raw_value = adc.read(0)
