@@ -48,7 +48,7 @@ try:
             print(f"Red brightness: {int(red_dc)}%")
         prev_red_btn = cur_red_btn
 
-        cur_green_btn = GPIO.input(BLUE_BTN)
+        cur_green_btn = GPIO.input(GREEN_BTN)
         if cur_green_btn == GPIO.HIGH and prev_green_btn == GPIO.LOW:
             green_dc = green_dc * 1.58
             if green_dc > 99:
