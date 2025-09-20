@@ -27,9 +27,9 @@ red_pwm.start(0)
 green_pwm.start(0)
 blue_pwm.start(0)
 
-red_dc = 0
-green_dc = 0
-blue_dc = 0
+red_dc = 0.99
+green_dc = 0.99
+blue_dc = 0.99
 
 prev_red_btn = GPIO.LOW
 prev_green_btn = GPIO.LOW
@@ -41,20 +41,29 @@ try:
     while True: 
         cur_red_btn = GPIO.input(RED_BTN)
         if cur_red_btn == GPIO.HIGH and prev_red_btn == GPIO.LOW:
-            red_dc = (red_dc + 10) % 110 
-            red_pwm.ChangeDutyCycle(red_dc)
+            red_dc = red_dc * 1.58
+            if red_dc > 99: 
+                red_dc = 0.99
+            red_pwm.ChangeDutyCycle(int(red_dc))
+            print(f"Red brightness: {int(red_dc)}%")
         prev_red_btn = cur_red_btn
 
         cur_green_btn = GPIO.input(BLUE_BTN)
         if cur_green_btn == GPIO.HIGH and prev_green_btn == GPIO.LOW:
-            green_dc = (green_dc + 10) % 110
-            green_pwm.ChangeDutyCycle(green_dc)
+            green_dc = green_dc * 1.58
+            if green_dc > 99:
+                green_dc = 0.99
+            green_pwm.ChangeDutyCycle(int(green_dc))
+            print(f"Green brightness: {int(green_dc)}%")
         prev_green_btn = cur_green_btn
 
         cur_blue_btn = GPIO.input(BLUE_BTN)
         if cur_blue_btn == GPIO.HIGH and prev_blue_btn == GPIO.LOW:
-            blue_dc = (blue_dc + 10) % 110
-            blue_pwm.ChangeDutyCycle(blue_dc)
+            blue_dc = blue_dc * 1.58
+            if blue_dc > 99: 
+                blue_dc = 0.99
+            blue_pwm.ChangeDutyCycle(int(blue_dc))
+            print(f"Blue brightness: {int(blue_dc)}%")
         prev_blue_btn = cur_blue_btn
 
         time.sleep(0.05)
