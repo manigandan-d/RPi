@@ -41,7 +41,7 @@ try:
             GPIO.output(RED_PIN, red_state)
         prev_red_btn = cur_red_btn
 
-        cur_green_btn = GPIO.input(BLUE_BTN)
+        cur_green_btn = GPIO.input(GREEN_BTN)
         if cur_green_btn == GPIO.HIGH and prev_green_btn == GPIO.LOW:
             green_state = not green_state
             GPIO.output(GREEN_PIN, green_state)
