@@ -25,7 +25,7 @@ try:
         angle = (adc_value / 1023) * 180
         set_angle(angle)
 
-        print(f"ADC: {adc_value:4d}  Angle: {angle:6.1f}°")
+        print(f"ADC: {adc_value:4d}  ->  Angle: {angle:6.1f}°")
 
         time.sleep(0.1)
 
