@@ -17,7 +17,9 @@ try:
         y_val = adc.read(1)
         btn_state = GPIO.input(SW_PIN)
 
-        print(f"X Value: {x_val}  Y Value: {y_val}  Button State: {btn_state}")
+        print(f"X Value: {x_val:4d}  Y Value: {y_val:4d}  Button State: {btn_state}")
+
+        time.sleep(0.5)
 
 except KeyboardInterrupt: 
     print("Exiting...")
