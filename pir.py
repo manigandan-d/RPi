@@ -1,9 +1,9 @@
 import RPi.GPIO as GPIO
 import time
 
-PIR_PIN = 17 
-
 GPIO.setmode(GPIO.BCM)
+
+PIR_PIN = 17 
 GPIO.setup(PIR_PIN, GPIO.IN)
 
 time.sleep(5)
