@@ -34,14 +34,15 @@ try:
             if tempMode:
                 temp_f = (temp_c * 9/5) + 32
                 lcd.clear()
-                lcd.write_string("Temp: {:.1f}F".format(temp_f))
+                lcd.write_string(f"Temp: {temp_f:.1f}F")
                 lcd.crlf()
-                lcd.write_string("Hum : {:.1f}%".format(humidity))
+                lcd.write_string(f"Hum : {humidity:.1f}%")
+                
             else:
                 lcd.clear()
-                lcd.write_string("Temp: {:.1f}C".format(temp_c))
+                lcd.write_string(f"Temp: {temp_c:.1f}C")
                 lcd.crlf()
-                lcd.write_string("Hum : {:.1f}%".format(humidity))
+                lcd.write_string(f"Hum : {humidity:.1f}%")
 
         else:
             lcd.clear()
