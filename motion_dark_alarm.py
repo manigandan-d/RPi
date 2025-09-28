@@ -45,15 +45,15 @@ try:
             lcd.cursor_pos = (0, 0)
             lcd.write_string("Program Mode")
             lcd.cursor_pos = (1, 0)
-            lcd.write_string(f"Dark Thrld: {dark_threshold}")
+            lcd.write_string(f"Dark Thrld:{dark_threshold:4}")
 
         elif mode == "monitor":
             pir = GPIO.input(PIR)
             ldr_value = round(adc.read(1))
             lcd.cursor_pos = (0, 0)
-            lcd.write_string(f"LDR Val: {ldr_value}")
+            lcd.write_string(f"LDR Val:{ldr_value:4}")
             lcd.cursor_pos = (1, 0)
-            lcd.write_string(f"Dark Thrld: {dark_threshold}")
+            lcd.write_string(f"Dark Thrld:{dark_threshold:4}")
 
             is_dark = ldr_value < dark_threshold
 
