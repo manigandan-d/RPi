@@ -31,6 +31,7 @@ try:
         cur_btn_state = GPIO.input(BUTTON)
         if cur_btn_state == GPIO.HIGH and prev_btn_state == GPIO.LOW:
             mode = "monitor" if mode == "program" else "program"
+            GPIO.output(BUZZER, GPIO.LOW)
             lcd.clear()
             time.sleep(0.2)
         prev_btn_state = cur_btn_state
@@ -58,8 +59,10 @@ try:
                 else:
                     GPIO.output(BUZZER, GPIO.LOW)
 
-            except RuntimeError:
-                pass
+            except RuntimeError as e:
+                print("Retrying...", e)
+                time.sleep(2)
+                continue
 
         time.sleep(0.5)
 
