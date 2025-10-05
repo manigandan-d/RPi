@@ -29,7 +29,6 @@ try:
             lcd.write_string(f"Key Pressed: {key}")
         time.sleep(0.1)
 
-
 except KeyboardInterrupt:
     print("Exiting...")
 
