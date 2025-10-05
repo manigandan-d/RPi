@@ -43,6 +43,7 @@ try:
 
             else:
                 entered += key
+                lcd.clear()
                 lcd.write_string("Enter Password:")
                 lcd.crlf()
                 lcd.write_string("*" * len(entered))
