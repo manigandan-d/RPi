@@ -17,7 +17,7 @@ ROW_PINS = [5, 6, 13, 19]
 COL_PINS = [12, 16, 20, 21]
 
 for row in ROW_PINS:
-    GPIO.setup(row, GPIO.output)
+    GPIO.setup(row, GPIO.OUT)
     GPIO.output(row, GPIO.LOW)
 
 for col in COL_PINS:
@@ -42,7 +42,7 @@ try:
         key = read_keypad()    
         if key:
             print(f"Key Pressed: {key}")
-        time.sleep(0.2)
+        time.sleep(0.1)
 
 
 except KeyboardInterrupt:
