@@ -20,11 +20,12 @@ lcd.clear()
 print("Starting...")
 
 try:
-    print("Press keys on the keypad")
+    lcd.write_string("Press keys")
 
     while True:
         key = keypad.get_key()    
         if key:
+            lcd.clear()
             lcd.write_string(f"Key Pressed: {key}")
         time.sleep(0.1)
 
