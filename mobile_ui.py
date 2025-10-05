@@ -49,7 +49,6 @@ try:
                 lcd.write_string("*" * len(entered))
         time.sleep(0.1)
 
-
 except KeyboardInterrupt:
     print("Exiting...")
 
